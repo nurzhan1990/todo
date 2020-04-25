@@ -38,7 +38,7 @@ class TaskController extends Controller
         if(!empty($res['date_end'])){
 
             $dt = new DateTime();
-            $query->where('responsibleName', '<=', $dt->setTimestamp(strtotime($res['date_end']))->format('Y-m-d H:i'));
+            $query->where('date_end', '<=', $dt->setTimestamp(strtotime($res['date_end']))->format('Y-m-d H:i'));
         };
         if(!empty($res['name'])){
             $query->where('name', 'like', '%'.$res['name'].'%');
@@ -47,7 +47,7 @@ class TaskController extends Controller
         switch ($request->get('opt')) {
             case 'responsible':
 
-                $query->where('responsibleName', 'like', '%'.$par.'%');
+                $query->orWhere('responsibleName', 'like', '%'.$par.'%');
                 $query->selectRaw('responsibleName as name');
                 $query->groupBy('responsibleName');
 

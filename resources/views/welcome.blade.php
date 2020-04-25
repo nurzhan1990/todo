@@ -13,7 +13,7 @@
     </head>
     <body class="d-flex flex-column h-100">
 
-    <div id="app">
+    <div id="app" style="padding-top: 20px">
         <task></task>
     </div>
 
